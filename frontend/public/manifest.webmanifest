@@ -1,0 +1,10 @@
+{
+  "name": "Lodestar",
+  "short_name": "Lodestar",
+  "description": "Market research, charts and paper trading.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#141415",
+  "theme_color": "#141415",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

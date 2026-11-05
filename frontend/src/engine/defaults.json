@@ -1,0 +1,278 @@
+{
+ "settings": {
+  "general": {
+   "base_currency": "USD",
+   "fx_rate_to_base": 1,
+   "timezone": "America/New_York",
+   "allow_short": false
+  },
+  "data": {
+   "provider": "simulation",
+   "alpaca_feed": "iex",
+   "quote_poll_seconds": 5,
+   "stale_quote_seconds": 120,
+   "history_years": 5
+  },
+  "universe": {
+   "symbols": []
+  },
+  "costs": {
+   "commission_per_share": 0,
+   "min_commission": 0,
+   "default_spread_bps": 3,
+   "slippage_bps": 5
+  },
+  "risk": {
+   "account_equity_override": null,
+   "risk_per_trade_pct": 0.75,
+   "max_position_pct": 15,
+   "max_gross_exposure_pct": 100,
+   "max_sector_pct": 35,
+   "max_correlation": 0.8,
+   "max_daily_loss_pct": 2,
+   "max_drawdown_pct": 15,
+   "stop_atr_mult": 1.5,
+   "target_r_multiples": [
+    1.5,
+    2.5
+   ]
+  },
+  "scanner": {
+   "interval_minutes": 15,
+   "horizon_days": 10,
+   "min_price": 5,
+   "min_avg_dollar_volume": 20000000,
+   "max_spread_bps": 25,
+   "min_prob_edge": 0.03,
+   "min_net_expected_return_pct": 0.25,
+   "max_uncertainty_pct": 20,
+   "min_model_reliability": 0.35,
+   "stale_after_minutes": 30,
+   "event_blackout_days": 2,
+   "weights": {
+    "net_expected_return": 0.2,
+    "prob_edge": 0.2,
+    "reward_risk": 0.1,
+    "model_reliability": 0.15,
+    "signal_agreement": 0.15,
+    "liquidity": 0.08,
+    "regime_fit": 0.07,
+    "data_quality": 0.05
+   }
+  },
+  "model": {
+   "horizon_days": 10,
+   "barrier_target_atr": 2,
+   "barrier_stop_atr": 1.5,
+   "retrain_days": 7,
+   "min_train_rows": 3000,
+   "methods": [
+    "logistic",
+    "gbm",
+    "forest",
+    "knn",
+    "factor",
+    "ensemble"
+   ],
+   "selection": "auto"
+  },
+  "strategies": {
+   "momentum": {
+    "enabled": true,
+    "params": {
+     "top_pct": 0.2,
+     "lookback": 126
+    }
+   },
+   "mean_reversion": {
+    "enabled": true,
+    "params": {
+     "rsi2_entry": 10,
+     "rsi2_exit": 70
+    }
+   },
+   "trend": {
+    "enabled": true,
+    "params": {
+     "adx_min": 25
+    }
+   },
+   "breakout": {
+    "enabled": true,
+    "params": {
+     "channel": 20,
+     "volume_mult": 1.5
+    }
+   },
+   "ml_forecast": {
+    "enabled": true,
+    "params": {
+     "min_prob_edge": 0.03
+    }
+   }
+  },
+  "paper": {
+   "starting_cash": 100000,
+   "trading_enabled": true,
+   "sandbox": true,
+   "max_sandbox_deposit": 1000000000
+  },
+  "autopilot": {
+   "enabled": false,
+   "mode": "auto",
+   "schedule": "auto",
+   "custom_start": "09:45",
+   "custom_end": "15:45",
+   "days": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "interval_seconds": 60,
+   "min_score": 60,
+   "max_trades_per_day": 10,
+   "max_open_positions": 5,
+   "max_position_pct": 10,
+   "max_capital_pct": 50,
+   "allow_short": false,
+   "use_brackets": true,
+   "exit_on_signal_flip": true,
+   "max_hold_days": 10,
+   "symbols_mode": "universe",
+   "watchlist_id": null,
+   "stop_on_daily_loss_pct": 2,
+   "proposal_ttl_minutes": 30,
+   "rotate_for_better": true,
+   "rotate_margin": 15,
+   "pause_until": null,
+   "stop_at": null,
+   "practice_mode": false,
+   "pickiness": "balanced"
+  },
+  "live_trading": {
+   "enabled": false
+  },
+  "explanations": {
+   "llm_enabled": false,
+   "llm_model": "claude-sonnet-5-5"
+  }
+ },
+ "widgets": [
+  "account",
+  "alerts",
+  "autopilot",
+  "breadth",
+  "chart",
+  "equity",
+  "indices",
+  "model",
+  "movers",
+  "news",
+  "opportunities",
+  "positions",
+  "quote",
+  "regime",
+  "sectors",
+  "watchlist"
+ ],
+ "default_layout": [
+  {
+   "i": "w1",
+   "widget": "indices",
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 4,
+   "config": {}
+  },
+  {
+   "i": "w2",
+   "widget": "regime",
+   "x": 0,
+   "y": 4,
+   "w": 4,
+   "h": 6,
+   "config": {}
+  },
+  {
+   "i": "w3",
+   "widget": "opportunities",
+   "x": 4,
+   "y": 4,
+   "w": 8,
+   "h": 6,
+   "config": {}
+  },
+  {
+   "i": "w4",
+   "widget": "chart",
+   "x": 0,
+   "y": 10,
+   "w": 8,
+   "h": 9,
+   "config": {
+    "symbol": "SPY"
+   }
+  },
+  {
+   "i": "w5",
+   "widget": "sectors",
+   "x": 8,
+   "y": 10,
+   "w": 4,
+   "h": 9,
+   "config": {}
+  },
+  {
+   "i": "w6",
+   "widget": "movers",
+   "x": 0,
+   "y": 19,
+   "w": 6,
+   "h": 7,
+   "config": {}
+  },
+  {
+   "i": "w7",
+   "widget": "news",
+   "x": 6,
+   "y": 19,
+   "w": 6,
+   "h": 7,
+   "config": {}
+  }
+ ],
+ "providers": [
+  {
+   "name": "alpaca",
+   "label": "Alpaca Market Data",
+   "kind": "Real-time (IEX venue on free plan)",
+   "keys": [
+    "ALPACA_API_KEY_ID",
+    "ALPACA_API_SECRET_KEY"
+   ],
+   "signup": "https://alpaca.markets",
+   "limits": "Free plan: 200 requests/min, IEX real-time, consolidated history delayed 15 min, news included.",
+   "caveats": "IEX is a single exchange (a few % of volume): prices are real but volume and bid/ask are partial. Fundamentals come from Yahoo."
+  },
+  {
+   "name": "simulation",
+   "label": "Simulation",
+   "kind": "Synthetic",
+   "keys": [],
+   "signup": null,
+   "limits": "Unlimited, offline.",
+   "caveats": "Generated prices for learning the app. Never real market data."
+  }
+ ],
+ "alert_kinds": {
+  "price_above": "Price rises above",
+  "price_below": "Price falls below",
+  "pct_change": "Daily move exceeds ±%",
+  "scanner_hit": "Appears in scanner (score ≥)",
+  "prob_above": "Target-first probability ≥",
+  "data_issue": "Data provider problem"
+ }
+}
